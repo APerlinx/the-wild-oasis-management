@@ -35,7 +35,7 @@ function CabinTable() {
     data: cabins,
     error,
   } = useQuery({
-    queryKey: ['cabin'],
+    queryKey: ['cabins'],
     queryFn: getCabins,
   })
   if (isLoading) return <Spinner />
@@ -50,7 +50,7 @@ function CabinTable() {
         <div></div>
       </TableHeader>
       {cabins.map((cabin) => (
-        <CabinRow cabin={cabin} key={cabins.id} />
+        <CabinRow cabin={cabin} key={cabin.id} />
       ))}
     </Table>
   )
