@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { cloneElement, createContext, useContext, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { HiXMark } from 'react-icons/hi2'
 import styled from 'styled-components'
@@ -53,34 +52,13 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `
-const ModalContext = createContext()
 
-function Modal({ children }) {
-  const [openName, setOpenName] = useState('')
-
-  const close = () => setOpenName('')
-  const open = setOpenName
-
-  return (
-    <ModalContext.Provider value={{ open, close, openName }}>
-      {children}
-    </ModalContext.Provider>
-  )
-}
-
-function Open({ children, opensWindowName }) {
-  const { open } = useContext(ModalContext)
-  return cloneElement(children, { onClick: () => open(opensWindowName) })
-}
-
-function Window({ children, name }) {
-  const { openName, close } = useContext(ModalContext)
-  if (name !== openName) return null
+function Modal({ children, onClose }) {
   return createPortal(
     <Overlay>
       <StyledModal>
-        <div>{cloneElement(children, { onCloseModal: close })}</div>
-        <Button onClick={close}>
+        <div>{children}</div>
+        <Button onClick={onClose}>
           <HiXMark />
         </Button>
       </StyledModal>
@@ -88,8 +66,12 @@ function Window({ children, name }) {
     document.body
   )
 }
-
-Modal.Open = Open
-Modal.Window = Window
+// createPortal ? : Instead of rendring it like the css wants so inside his parent we can move it to somewhere else
+// in this example I moved it to sit in body next to this parent or above -> in the DOM tree. important here is that while this component will not render
+// under his parent who gives him the props and the style he can still get his props (not style cause this is the whole point)
+// -> by rendering in his parent only in the React DOM Tree! which is different from the HTML DOM ofcourse so React will still
+// give him the props he asked but he won't get the style from the parent like we want sometime for reuseable components like this ('Modal')
+// --Note--: Alot of developers discourge render it in the body like i did here with 'document.body'
+//
 
 export default Modal
