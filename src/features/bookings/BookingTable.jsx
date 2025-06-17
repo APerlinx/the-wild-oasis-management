@@ -1,10 +1,13 @@
-import BookingRow from "./BookingRow";
-import Table from "../../ui/Table";
-import Menus from "../../ui/Menus";
+import { useBookings } from './useBookings'
+
+import BookingRow from './BookingRow'
+import Table from '../../ui/Table'
+import Menus from '../../ui/Menus'
+import Spinner from '../../ui/Spinner'
 
 function BookingTable() {
-  const bookings = [];
-
+  const { isLoading, bookings } = useBookings()
+  if (isLoading) return <Spinner />
   return (
     <Menus>
       <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
@@ -25,7 +28,7 @@ function BookingTable() {
         />
       </Table>
     </Menus>
-  );
+  )
 }
 
-export default BookingTable;
+export default BookingTable
