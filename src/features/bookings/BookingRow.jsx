@@ -61,7 +61,7 @@ function BookingRow({
       <Cabin>{cabinName}</Cabin>
 
       <Stacked>
-        <span>{guestName}</span>
+        <span>{guestName || 'Unknown guest'}</span>
         <span>{email}</span>
       </Stacked>
 
