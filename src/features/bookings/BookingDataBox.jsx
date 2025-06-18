@@ -1,16 +1,17 @@
-import styled from "styled-components";
-import { format, isToday } from "date-fns";
+/* eslint-disable react/prop-types */
+import styled from 'styled-components'
+import { format, isToday } from 'date-fns'
 import {
   HiOutlineChatBubbleBottomCenterText,
   HiOutlineCheckCircle,
   HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
-} from "react-icons/hi2";
+} from 'react-icons/hi2'
 
-import DataItem from "../../ui/DataItem";
-import { Flag } from "../../ui/Flag";
+import DataItem from '../../ui/DataItem'
+import { Flag } from '../../ui/Flag'
 
-import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import { formatDistanceFromNow, formatCurrency } from '../../utils/helpers'
 
 const StyledBookingDataBox = styled.section`
   /* Box */
@@ -19,7 +20,7 @@ const StyledBookingDataBox = styled.section`
   border-radius: var(--border-radius-md);
 
   overflow: hidden;
-`;
+`
 
 const Header = styled.header`
   background-color: var(--color-brand-500);
@@ -45,15 +46,15 @@ const Header = styled.header`
   }
 
   & span {
-    font-family: "Sono";
+    font-family: 'Sono';
     font-size: 2rem;
     margin-left: 4px;
   }
-`;
+`
 
 const Section = styled.section`
   padding: 3.2rem 4rem 1.2rem;
-`;
+`
 
 const Guest = styled.div`
   display: flex;
@@ -66,7 +67,7 @@ const Guest = styled.div`
     font-weight: 500;
     color: var(--color-grey-700);
   }
-`;
+`
 
 const Price = styled.div`
   display: flex;
@@ -77,9 +78,9 @@ const Price = styled.div`
   margin-top: 2.4rem;
 
   background-color: ${(props) =>
-    props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
+    props.isPaid ? 'var(--color-green-100)' : 'var(--color-yellow-100)'};
   color: ${(props) =>
-    props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
+    props.isPaid ? 'var(--color-green-700)' : 'var(--color-yellow-700)'};
 
   & p:last-child {
     text-transform: uppercase;
@@ -92,14 +93,14 @@ const Price = styled.div`
     width: 2.4rem;
     color: currentColor !important;
   }
-`;
+`
 
 const Footer = styled.footer`
   padding: 1.6rem 4rem;
   font-size: 1.2rem;
   color: var(--color-grey-500);
   text-align: right;
-`;
+`
 
 // A purely presentational component
 function BookingDataBox({ booking }) {
@@ -117,7 +118,7 @@ function BookingDataBox({ booking }) {
     isPaid,
     guests: { fullName: guestName, email, country, countryFlag, nationalID },
     cabins: { name: cabinName },
-  } = booking;
+  } = booking
 
   return (
     <StyledBookingDataBox>
@@ -130,11 +131,11 @@ function BookingDataBox({ booking }) {
         </div>
 
         <p>
-          {format(new Date(startDate), "EEE, MMM dd yyyy")} (
+          {format(new Date(startDate), 'EEE, MMM dd yyyy')} (
           {isToday(new Date(startDate))
-            ? "Today"
+            ? 'Today'
             : formatDistanceFromNow(startDate)}
-          ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
+          ) &mdash; {format(new Date(endDate), 'EEE, MMM dd yyyy')}
         </p>
       </Header>
 
@@ -142,7 +143,7 @@ function BookingDataBox({ booking }) {
         <Guest>
           {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
           <p>
-            {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ""}
+            {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ''}
           </p>
           <span>&bull;</span>
           <p>{email}</p>
@@ -160,7 +161,7 @@ function BookingDataBox({ booking }) {
         )}
 
         <DataItem icon={<HiOutlineCheckCircle />} label="Breakfast included?">
-          {hasBreakfast ? "Yes" : "No"}
+          {hasBreakfast ? 'Yes' : 'No'}
         </DataItem>
 
         <Price isPaid={isPaid}>
@@ -173,15 +174,15 @@ function BookingDataBox({ booking }) {
               )} breakfast)`}
           </DataItem>
 
-          <p>{isPaid ? "Paid" : "Will pay at property"}</p>
+          <p>{isPaid ? 'Paid' : 'Will pay at property'}</p>
         </Price>
       </Section>
 
       <Footer>
-        <p>Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}</p>
+        <p>Booked {format(new Date(created_at), 'EEE, MMM dd yyyy, p')}</p>
       </Footer>
     </StyledBookingDataBox>
-  );
+  )
 }
 
-export default BookingDataBox;
+export default BookingDataBox

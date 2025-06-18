@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useBookings } from './useBookings'
 
 import BookingRow from './BookingRow'
@@ -5,11 +6,20 @@ import Table from '../../ui/Table'
 import Menus from '../../ui/Menus'
 import Spinner from '../../ui/Spinner'
 import Empty from '../../ui/Empty'
+import { useSearchParams } from 'react-router-dom'
 
 function BookingTable() {
+  const [searchParams] = useSearchParams()
   const { isLoading, bookings } = useBookings()
   if (!bookings?.length) return <Empty resourceName="bookings" />
   if (isLoading) return <Spinner />
+  const currentFilter = searchParams.get('status')
+
+  const filteredBookings = bookings.filter((booking) => {
+    if (currentFilter === 'all') return bookings
+    return booking.status === currentFilter
+  })
+
   return (
     <Menus>
       <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
@@ -23,7 +33,7 @@ function BookingTable() {
         </Table.Header>
 
         <Table.Body
-          data={bookings}
+          data={filteredBookings}
           render={(booking) => (
             <BookingRow key={booking.id} booking={booking} />
           )}
