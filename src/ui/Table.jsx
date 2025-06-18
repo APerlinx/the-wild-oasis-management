@@ -49,7 +49,7 @@ const Footer = styled.footer`
   justify-content: center;
   padding: 1.2rem;
 
-  /* This will hide the footer when it contains no child elements. Possible thanks to the parent selector :has 🎉 */
+  /* This will hide the footer when it contains no child elements. Possible thanks to the parent selector :has  */
   &:not(:has(*)) {
     display: none;
   }
