@@ -1,11 +1,13 @@
-import styled from "styled-components";
+/* eslint-disable react/prop-types */
+
+import styled from 'styled-components'
 
 const StyledDataItem = styled.div`
   display: flex;
   align-items: center;
   gap: 1.6rem;
   padding: 0.8rem 0;
-`;
+`
 
 const Label = styled.span`
   display: flex;
@@ -18,7 +20,7 @@ const Label = styled.span`
     height: 2rem;
     color: var(--color-brand-600);
   }
-`;
+`
 
 function DataItem({ icon, label, children }) {
   return (
@@ -29,7 +31,7 @@ function DataItem({ icon, label, children }) {
       </Label>
       {children}
     </StyledDataItem>
-  );
+  )
 }
 
-export default DataItem;
+export default DataItem
