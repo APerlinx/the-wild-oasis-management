@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 import CreateCabinForm from './CreateCabinForm'
 
 import { useDeleteCabin } from './useDeleteCabin'

@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
+import { useBooking } from './useBooking'
+import { useMoveBack } from '../../hooks/useMoveBack'
 
 import BookingDataBox from './BookingDataBox'
 import Row from '../../ui/Row'
@@ -10,10 +13,6 @@ import ButtonGroup from '../../ui/ButtonGroup'
 import Button from '../../ui/Button'
 import ButtonText from '../../ui/ButtonText'
 import Spinner from '../../ui/Spinner'
-import { useMoveBack } from '../../hooks/useMoveBack'
-import useBooking from './useBooking'
-import { HiArrowDownOnSquare } from 'react-icons/hi2'
-import { useNavigate } from 'react-router-dom'
 
 const HeadingGroup = styled.div`
   display: flex;
