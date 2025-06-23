@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styled from 'styled-components'
-import BookingDataBox from '../../features/bookings/BookingDataBox'
+import BookingDataBox from '../bookings/BookingDataBox'
 import { useBooking } from '../bookings/useBooking'
 import { useEffect, useState } from 'react'
 
