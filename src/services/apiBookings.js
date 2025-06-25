@@ -87,10 +87,6 @@ export async function getStaysTodayActivity() {
     )
     .order('created_at')
 
-  // Equivalent to this. But by querying this, we only download the data we actually need, otherwise we would need ALL bookings ever created
-  // (stay.status === 'unconfirmed' && isToday(new Date(stay.startDate))) ||
-  // (stay.status === 'checked-in' && isToday(new Date(stay.endDate)))
-
   if (error) {
     console.error(error)
     throw new Error('Bookings could not get loaded')
