@@ -40,7 +40,7 @@ const Discount = styled.div`
 `
 
 const NoDiscount = styled.span`
-  text-align: center;
+  text-align: start;
 `
 
 function CabinRow({ cabin }) {
