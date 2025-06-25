@@ -1,4 +1,5 @@
-import styled from "styled-components";
+/* eslint-disable react/prop-types */
+import styled from 'styled-components'
 
 const StyledStat = styled.div`
   /* Box */
@@ -12,7 +13,7 @@ const StyledStat = styled.div`
   grid-template-rows: auto auto;
   column-gap: 1.6rem;
   row-gap: 0.4rem;
-`;
+`
 
 const Icon = styled.div`
   grid-row: 1 / -1;
@@ -30,7 +31,7 @@ const Icon = styled.div`
     height: 3.2rem;
     color: var(--color-${(props) => props.color}-700);
   }
-`;
+`
 
 const Title = styled.h5`
   align-self: end;
@@ -39,13 +40,13 @@ const Title = styled.h5`
   letter-spacing: 0.4px;
   font-weight: 600;
   color: var(--color-grey-500);
-`;
+`
 
 const Value = styled.p`
   font-size: 2.4rem;
   line-height: 1;
   font-weight: 500;
-`;
+`
 
 function Stat({ icon, title, value, color }) {
   return (
@@ -54,7 +55,7 @@ function Stat({ icon, title, value, color }) {
       <Title>{title}</Title>
       <Value>{value}</Value>
     </StyledStat>
-  );
+  )
 }
 
-export default Stat;
+export default Stat
