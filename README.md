@@ -4,6 +4,7 @@ A **lightweight internal hotel management dashboard** built with **React** and *
 This version focuses on **simplified data access and editing tools for staff**, with a UI built completely using AI assistance.
 
 ---
+🌐 [Live Demo](https://wildoasisbeta.netlify.app/)
 
 ## 💡 About This Project
 
